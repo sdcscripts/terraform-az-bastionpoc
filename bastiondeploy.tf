@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "BastionRG" {
   name     = "${var.bastionrgname}"
-  location = "West Europe"
+  location = "${var.rglocation}"
   // # cycling issue when creating nic+subnet assoc's (- https://github.com/terraform-providers/terraform-provider-azurerm/issues/2489)
   // so during creation allow subnet associations to finish before starting bastion template deployment (which has a nic). 
   // also bastionpublicIP dependency so during destroy bastion is destroyed before public IP destroy (as bastion resource not supported natively in terraform need to add explicit dependency).  
